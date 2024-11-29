@@ -13,12 +13,21 @@ function adicionar() {
     //posicao 1 especifica tudo depois do referencial
     let itemValor = item.split('R$')[1];
     let quantidade = document.getElementById('quantidade').value;
+    //impede a digitação de números impossíveis
+    if (quantidade <= 0) {
+        alert('Digite um número válido.');
+        return;
+    }
+    //campo para captar o valor do campo de texto e exibir no console e em alerta
+    let textoExibir = document.getElementById('idTexto').value;
+    alert (textoExibir);
+    console.log(textoExibir);
     //calcula o subtotal por item
     let valorTotalItem = (itemValor * quantidade);
     //adicionar no carrinho
     let listaProdutos = document.getElementById('lista-produtos');
     listaProdutos.innerHTML = listaProdutos.innerHTML + `<section class="carrinho__produtos__produto"><span class="texto-azul">${quantidade}x</span> ${itemNome} <span class="texto-azul"> R$${valorTotalItem}</span></section>`
-    //atualizar o valor total
+    //atualiza o valor total
     totalGeral = totalGeral + valorTotalItem;
     let campoTotal = document.getElementById('valor-total');
     campoTotal.textContent = `R$ ${totalGeral}`;
